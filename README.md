@@ -1,4 +1,4 @@
-<h2> CS1332 Georgia Tech CS1332 Data Structure & Algorithms (Fall 2023) </h2>
+<h2> Georgia Tech CS1332 Data Structures & Algorithms (Fall 2023) </h2>
 
 HW 1: ArrayList
 
