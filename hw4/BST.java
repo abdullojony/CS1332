@@ -7,11 +7,8 @@ import java.lang.Math;
 
 /**
  * Your implementation of a binary search tree.
- *
- * @author Hwuiwon Kim
- * @userid hkim944
- * @version 1.0
  */
+
 public class BST<T extends Comparable<? super T>> {
     private BSTNode<T> root;
     private int size;

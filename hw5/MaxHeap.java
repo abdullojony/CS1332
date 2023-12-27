@@ -3,10 +3,6 @@ import java.util.NoSuchElementException;
 
 /**
  * Your implementation of a max heap.
- *
- * @author [Your Name]
- * @userid [Your UserID]
- * @version [Version Number]
  */
 public class MaxHeap<T extends Comparable<? super T>> {
 

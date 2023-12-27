@@ -6,10 +6,6 @@ import java.util.ArrayList;
 
 /**
  * Your implementation of HashMap.
- *
- * @author [Author's Name]
- * @userid [User ID]
- * @version [Version Number]
  */
 public class HashMap<K, V> {
 

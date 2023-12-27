@@ -1,4 +1,3 @@
-package hw1;
 public class ArrayList<T> {
     public static final int INITIAL_CAPACITY = 9;
     private T[] backingArray;

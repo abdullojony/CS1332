@@ -5,10 +5,6 @@ import java.util.NoSuchElementException;
 
 /**
  * Your implementation of an AVL Tree.
- *
- * @author [Your Name]
- * @userid [Your User ID]
- * @version [Version Number]
  */
 public class AVL<T extends Comparable<? super T>> {
     // DO NOT ADD OR MODIFY INSTANCE VARIABLES.

@@ -5,10 +5,6 @@ import java.util.Map;
 
 /**
  * Your implementations of various string searching algorithms.
- *
- * @author Hwuiwon Kim
- * @userid hkim944
- * @version 1.0
  */
 public class PatternMatching {
 
