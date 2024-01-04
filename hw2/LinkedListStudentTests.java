@@ -15,7 +15,7 @@ import static org.junit.Assert.assertSame;
  * @author The 1332 TAs
  * @version 1.0
  */
-public class LinkedListStudentTest {
+public class LinkedListStudentTests {
     private SinglyLinkedList<String> list;
 
     public static final int TIMEOUT = 200;
