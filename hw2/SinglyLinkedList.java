@@ -1,7 +1,11 @@
 /**
  * Your implementation of a circular singly linked list.
+ * @author Abdullojon Yusupov
+ * @userid abdullojony
+ * @version 1.0
  */
 public class SinglyLinkedList<T> {
+    
     // Do not add new instance variables or modify existing ones.
     private LinkedListNode<T> head;
     private int size;

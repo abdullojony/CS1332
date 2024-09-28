@@ -1,5 +1,9 @@
 /**
  * Your implementation of an ArrayList.
+ * 
+ * @author Abdullojon Yusupov
+ * @userid abdullojony
+ * @version 1.0
  */
 public class ArrayList<T> {
 
@@ -42,16 +46,13 @@ public class ArrayList<T> {
     public void addAtIndex(int index, T data) {
         if (index < 0 || index > size) throw new IndexOutOfBoundsException();
         if (data == null) throw new IllegalArgumentException();
-
+        
         if (size == backingArray.length) {
-            T[] newArray = (T[]) new Object[2 * backingArray.length];
-            for (int i = 0; i < backingArray.length; i++) {
-                newArray[i] = backingArray[i];
-            }
-            backingArray = newArray;
+            resizeArray(size * 2);
         }
 
         if (index < size) {
+            // shift elements by 1 position
             for (int j = size; j > index; j--) {
                 backingArray[j] = backingArray[j - 1];
             }
@@ -59,6 +60,19 @@ public class ArrayList<T> {
 
         backingArray[index] = data;
         size++;
+    }
+
+    /**
+     * Resizes array to the given capacity.
+     *
+     * @param capacity the new capacity of the array.
+     */
+    private void resizeArray(int capacity) {
+        T[] newArray = (T[]) new Object[capacity];
+        for (int i = 0; i < size; i++) {
+            newArray[i] = backingArray[i];
+        }
+        backingArray = newArray;
     }
 
     /**
@@ -104,6 +118,7 @@ public class ArrayList<T> {
         if (index < 0 || index >= size) throw new IndexOutOfBoundsException();
 
         T data = backingArray[index];
+        // shift elements by 1 position
         for (int i = index; i < size - 1; i++) {
             backingArray[i] = backingArray[i + 1];
         }

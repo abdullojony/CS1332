@@ -3,6 +3,10 @@ import java.util.NoSuchElementException;
 
 /**
  * Your implementation of a max heap.
+ *
+ * @author Abdullojon Yusupov
+ * @userid abdullojony
+ * @version 1.0
  */
 public class MaxHeap<T extends Comparable<? super T>> {
 
@@ -19,7 +23,6 @@ public class MaxHeap<T extends Comparable<? super T>> {
      * Use the constant field provided. Do not use magic numbers!
      */
     public MaxHeap() {
-        // [Your Implementation]
         backingArray = (T[]) new Comparable[INITIAL_CAPACITY];
         size = 0;
     }
@@ -45,7 +48,6 @@ public class MaxHeap<T extends Comparable<? super T>> {
      * @throws IllegalArgumentException if data or any element in data is null
      */
     public MaxHeap(ArrayList<T> data) {
-        // [Your Implementation]
         if (data == null) throw new IllegalArgumentException();
         backingArray = (T[]) new Comparable[data.size() * 2 + 1];
         size = data.size();
@@ -54,7 +56,7 @@ public class MaxHeap<T extends Comparable<? super T>> {
             backingArray[i + 1] = data.get(i);
         }
         for (int j = size / 2; j > 0; j--) {
-            downHeap(j);
+            maxHeapify(j);
         }
     }
 
@@ -65,7 +67,6 @@ public class MaxHeap<T extends Comparable<? super T>> {
      * @param j the index of a value getting exchanged with i
      */
     private void exchange(int i, int j) {
-        // [Your Implementation]
         if (i == j) return;
         T tmp = backingArray[i];
         backingArray[i] = backingArray[j];
@@ -80,17 +81,37 @@ public class MaxHeap<T extends Comparable<? super T>> {
      * @param item the item to be added to the heap
      */
     public void add(T item) {
-        // [Your Implementation]
         if (item == null) throw new IllegalArgumentException();
-        if (++size == backingArray.length) {
-            T[] newArray = (T[]) new Comparable[size * 2];
-            for (int i = 1; i < size; i++) {
-                newArray[i] = backingArray[i];
-            }
-            backingArray = newArray;
+        if (size == backingArray.length) resizeHeap(2 * size);
+        backingArray[++size] = item;
+        addHelper(size);
+    }
+    
+    /**
+     * Helper method for add(T item)
+     *
+     * @param i the index of the added item
+     */
+    private void addHelper(int i) {
+        if (i == 1) return;
+        int p = i / 2;
+        if (backingArray[p].compareTo(backingArray[i]) < 0) {
+            exchange(i, p);
+            addHelper(p);
         }
-        backingArray[size] = item;
-        maxHeapify(size);
+    }
+
+    /**
+     * Resizes heap to the given capacity.
+     *
+     * @param capacity the new capacity of the heap.
+     */
+    private void resizeHeap(int capacity) {
+        T[] newArray = (T[]) new Comparable[capacity];
+        for (int i = 1; i <= size; i++) {
+            newArray[i] = backingArray[i];
+        }
+        backingArray = newArray;
     }
 
     /**
@@ -102,23 +123,12 @@ public class MaxHeap<T extends Comparable<? super T>> {
      * @return the removed item
      */
     public T remove() {
-        // [Your Implementation]
         if (isEmpty()) throw new NoSuchElementException();
         T tmp = backingArray[1];
         exchange(size, 1);
         backingArray[size--] = null;
-        downHeap(1);
+        maxHeapify(1);
         return tmp;
-    }
-
-    private void downHeap(int i) {
-        int child = i*2;
-        if (child > size) return;
-        if (child < size && backingArray[child].compareTo(backingArray[child+1]) < 0) child++;
-        if (backingArray[child].compareTo(backingArray[i]) > 0) {
-            exchange(child, i);
-            downHeap(child);
-        }
     }
 
     /**
@@ -127,12 +137,14 @@ public class MaxHeap<T extends Comparable<? super T>> {
      * @param i the index of a value
      */
     private void maxHeapify(int i) {
-        // [Your Implementation]
-        if (i == 1) return;
-        int p = i / 2;
-        if (backingArray[p].compareTo(backingArray[i]) < 0) {
-            exchange(i, p);
-            maxHeapify(p);
+        int child = i * 2; // left child
+        if (child > size) return; // out of bounds
+
+        // compare it with right child && take max of them
+        if (child < size && backingArray[child].compareTo(backingArray[child + 1]) < 0) child++;
+        if (backingArray[child].compareTo(backingArray[i]) > 0) {
+            exchange(child, i);
+            maxHeapify(child);
         }
     }
 
@@ -142,8 +154,7 @@ public class MaxHeap<T extends Comparable<? super T>> {
      * @return the maximum element, null if the heap is empty
      */
     public T getMax() {
-        // [Your Implementation]
-        return isEmpty()? null : backingArray[1];
+        return isEmpty() ? null : backingArray[1];
     }
 
     /**
@@ -152,7 +163,6 @@ public class MaxHeap<T extends Comparable<? super T>> {
      * @return true if the heap is empty, false otherwise
      */
     public boolean isEmpty() {
-        // [Your Implementation]
         return size == 0;
     }
 
@@ -161,7 +171,6 @@ public class MaxHeap<T extends Comparable<? super T>> {
      * {@code INITIAL_CAPACITY}.
      */
     public void clear() {
-        // [Your Implementation]
         backingArray = (T[]) new Comparable[INITIAL_CAPACITY];
         size = 0;
     }
@@ -175,7 +184,7 @@ public class MaxHeap<T extends Comparable<? super T>> {
      * @return number of items in the heap
      */
     public int size() {
-        // [Your Implementation]
+        // DO NOT MODIFY THIS METHOD!
         return size;
     }
 
@@ -188,7 +197,7 @@ public class MaxHeap<T extends Comparable<? super T>> {
      * @return the backing array of the heap
      */
     public Object[] getBackingArray() {
-        // [Your Implementation]
+        // DO NOT MODIFY THIS METHOD!
         return backingArray;
     }
 }
