@@ -321,4 +321,5 @@ public class PatternMatchingStudentTests {
         assertEquals("Comparison count was " + comparator.getComparisonCount()
                 + ". Should be 5.", 5, comparator.getComparisonCount());
     }
+    
 }

@@ -62,4 +62,5 @@ public class LinkedNode<T> {
     public String toString() {
         return "Node containing: " + data;
     }
+    
 }

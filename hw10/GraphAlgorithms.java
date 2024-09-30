@@ -10,6 +10,10 @@ import java.util.HashMap;
 
 /**
  * Your implementation of various different graph algorithms.
+ *
+ * @author Abdullojon Yusupov
+ * @userid abdullojony
+ * @version 1.0
  */
 public class GraphAlgorithms {
 

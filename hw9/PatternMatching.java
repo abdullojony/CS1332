@@ -5,6 +5,10 @@ import java.util.Map;
 
 /**
  * Your implementations of various string searching algorithms.
+ *
+ * @author Abdullojon Yusupov
+ * @userid abdullojony
+ * @version 1.0
  */
 public class PatternMatching {
 
@@ -213,9 +217,7 @@ public class PatternMatching {
      * For example: Shifting from "bunn" to "unny" in "bunny" with base 101
      * hash("unny") = (hash("bunn") - b * 101 ^ 3) * 101 + y =
      * (102174235 - 98 * 101 ^ 3) * 101 + 121 = 121678558
-    
-
- *
+     * 
      * Keep in mind that calculating exponents is not O(1) in general, so you'll
      * need to keep track of what BASE^{m - 1} is for updating the hash.
      *

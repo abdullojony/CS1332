@@ -5,8 +5,26 @@ import java.util.Random;
 
 /**
  * Your implementation of various sorting algorithms.
+ *
+ * @author Abdullojon Yusupov
+ * @userid abdullojony
+ * @version 1.0
  */
 public class Sorting {
+
+    /**
+     * Swap two elements in an array
+     *
+     * @param arr the array that contains items to swap
+     * @param a first item
+     * @param b second item
+     * @param <T>  data type to sort
+     */
+    private static <T> void swap(T[] arr, int a, int b) {
+        T tmp = arr[b];
+        arr[b] = arr[a];
+        arr[a] = tmp;
+    }
 
     /**
      * Implement insertion sort.
@@ -171,8 +189,9 @@ public class Sorting {
      */
     public static <T> void quickSort(T[] arr, Comparator<T> comparator,
                                      Random rand) {
-        if (arr == null || comparator == null || rand == null)
+        if (arr == null || comparator == null || rand == null) {
             throw new IllegalArgumentException();
+        }
         
         qsHelper(arr, 0, arr.length - 1, rand, comparator);
     }
@@ -212,20 +231,6 @@ public class Sorting {
         swap(arr, first, j);
         qsHelper(arr, first, j - 1, rand, comparator);
         qsHelper(arr, j + 1, last, rand, comparator);
-    }
-
-    /**
-     * Swap two elements in an array
-     *
-     * @param arr the array that contains items to swap
-     * @param a first item
-     * @param b second item
-     * @param <T>  data type to sort
-     */
-    private static <T> void swap(T[] arr, int a, int b) {
-        T tmp = arr[b];
-        arr[b] = arr[a];
-        arr[a] = tmp;
     }
 
     /**

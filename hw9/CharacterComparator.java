@@ -35,4 +35,5 @@ public class CharacterComparator implements Comparator<Character> {
     public int getComparisonCount() {
         return comparisonCount;
     }
+    
 }
