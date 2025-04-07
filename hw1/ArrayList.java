@@ -124,6 +124,12 @@ public class ArrayList<T> {
         }
 
         backingArray[--size] = null;
+
+        // shrink the array if it is one-quarter full.
+        if (size > 0 && size == backingArray.length / 4) {
+            resizeArray(backingArray.length / 2);
+        }
+
         return data;
     }
 
